@@ -190,7 +190,7 @@ rtsp，英文全称 Real Time Streaming Protocol，RFC2326，实时流传输协�
 
 
 
-Spring IOC讲一讲，跟DI有什么区别
+#### Spring IOC讲一讲，跟DI有什么区别
 
 ```java
 IOC是控制反转，把对象的创建和对象之间的调用过程，交给Spring来管理，而不是使用new的方式写死在代码中，降低了系统的耦合度。
@@ -222,7 +222,7 @@ DI的意思是依赖注入，直白点也就是对象成员变量的注入。DI�
 
 ```
 
-Spring有几种类型的bean，有什么区别？
+#### Spring有几种类型的bean，有什么区别？
 
 ```java
 Spring有两种类型的bean，一种是普通类型的bean，另一种是工厂类型的bean（FactoryBean）
@@ -234,7 +234,7 @@ Spring有两种类型的bean，一种是普通类型的bean，另一种是工厂
 
 ```
 
-Spring中bean的作用域了解吗？
+#### Spring中bean的作用域了解吗？
 
 ```java
 1 在Spring中可以设置bean实例是单实例还是多实例 
@@ -247,7 +247,7 @@ Spring中bean的作用域了解吗？
   
 ```
 
-Spring中bean的生命周期讲一下
+#### Spring中bean的生命周期讲一下
 
 ```java
 Spring中bean的生命周期粗略的分有五步，详细的分有七步
@@ -261,7 +261,7 @@ Spring中bean的生命周期粗略的分有五步，详细的分有七步
 
 ```
 
-Java中的注解了解吗
+#### Java中的注解了解吗
 
 ```java
 java中的注解是jdk1.5后引入的一个新特性，也成为元数据（即描述数据的数据），是一种代码级别的说明，与类，接口，枚举是在同一个层次。它可以声明在包，类，字段，局部变量，方法参数等前面。
@@ -273,7 +273,7 @@ jdk中预定义的一些注解有@Override @Deprecated @SuppressWarnings
 
 
 
-Spring中的注解有哪些？
+#### Spring中的注解有哪些？
 
 ```java
 创建对象的注解
@@ -297,7 +297,7 @@ Spring中的注解有哪些？
 
 
 
-java反射了解吗，详细说一下反射，反射有什么用途？
+#### java反射了解吗，详细说一下反射，反射有什么用途？
 
 ```java
 反射机制允许程序在执行期间借助于反射的API取得任何类的内部信息（比如成员变量，构造器，方法等信息），并能操作对象的属性及方法，反射在框架的底层都会用到
@@ -307,27 +307,206 @@ java反射可以做到
 2 在运行时构造任何一个类的对象
 3 在运行时得到任意一个类的方法和成员变量
 4 生成动态代理
-    
-为什么说反射会有性能问题？
-这个问题就说来话长了，这里首先要知道java代码在pc中一共有三种状态。
-1 代码阶段 从java代码变成class阶段
-2 类加载阶段 加载class阶段 
-3 运行时阶段 已经完成class类文件的加载
+   	
+```
 
-对于正常的new对象的这种形式，属于静态加载，在代码编译完成后，new后面跟的类实际上已经完成了类的加载。
-在程序运行期间，当执行到new这行代码的时候，实际上已经不需要再去加载类，因为代码已经在编译期间完成的类的加载。不过编译期间不能完成所有类的加载，对于java来说它的代码空间是开放的，不要求在运行之前加载完所有的类，我们在程序运行期的时候很可能遇到这样一种情况，运行到某一行代码的时候我需要进行类的加载，我们知道类的加载是比较耗时的，自然就会降低程序的响应时间。
+#### aop了解吗，详细说一下
+
+```java
+aop是面向切面编程，通过预编译和运行时动态代理的方式实现程序功能的一种技术。利用aop可以对业务的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性。
+通俗来讲就是在不修改源代码的情况下，在主干中添加新的功能。
+
+aop底层使用的是动态代理，有两种情况的动态代理，对于要增强的类来说，分为有接口和无接口两种情况。有接口使用的是jdk的动态代理，无接口使用的是cglib的动态代理。
+aop相关术语
+1 连接点 类中可以被增强的方法
+2 切入点 实际上类被增强的方法
+3 通知   实际增强的逻辑部分称为通知，通知有多种类型。
+4 切面   是一个动作，把通知应用到切入点的过程称为切面
+
+在Spring中一般使用aspectj来完成aop的操作，并不是Spring的一部分，而是独立的aop框架。
+
+```
+
+#### 事务了解吗，Spring中的事务有什么特点，是怎么做的
+
+```java
+事务是数据库操作的基本单元，逻辑上的一组操作，要么全部成功，要么全部失败。
+事务有四大特性，如下
+原子性:原子性是指事务是一个不可分割的工作单位，事务中的操作要么全部成功，要么全部失败。比如在同一个事务中的SQL语句，要么全部执行成功，要么全部执行失败。
+一致性:事务必须使数据库从一个一致性状态变换到另外一个一致性状态。
+隔离性:事务的隔离性是多个用户并发访问数据库时，数据库为每一个用户开启的事务，不能被其他事务的操作数据所干扰，多个并发事务之间要相互隔离。
+持久性:持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来即使数据库发生故障也不应该对其有任何影响。
+
+ Spring的事务管理有两种
+ 1 编程式事务（采用硬编码的方式，不推荐）
+ 2 声明式事务（可以使用xml或者注解实现，推荐注解）
+ 
+ 在Spring使用声明式事务管理的时候，底层使用的就是aop原理
+ 
+ 使用Spring声明式事务的步骤
+ 1 在配置文件中配置事务管理器并引入数据源
+ 2 在配置文件中开启事务注解
+ 3 推荐在service层的类上加上@Transactional注解即可
+ 
+ 事务的传播行为
+ 当一个事务的方法被另一个事务的方法调用时，这个事务的方法应该如何执行。
+ https://blog.csdn.net/edward0830ly/article/details/7569954（传播行为）
+```
+
+#### SpringMVC包括什么
+
+<img src="C:\Users\86198\AppData\Roaming\Typora\typora-user-images\image-20220904111652397.png" alt="image-20220904111652397" style="zoom:67%;" />
+
+
+
+#### 什么是MVC，什么是SpringMVC？
+
+```java
+MVC是一种软件架构的思想，将软件按照模型，视图和控制器来划分。
+M:模型 V:视图  C:控制层
+MVC工作流程如下
+用户通过视图层发送请求到服务器，在服务器中的C层接收请求，C层调用Service层进行处理并封装到M层，然后C层根据M的数据渲染V层，最后返回给浏览器。
 
 ```
 
 
 
+#### 如何配置SpringMVC的前端控制器DispatcherServlet
+
+```java
+a>默认配置方式
+
+此配置作用下，SpringMVC的配置文件默认位于WEB-INF下，默认名称为\<servlet-name>-servlet.xml，例如，以下配置所对应SpringMVC的配置文件位于WEB-INF下，文件名为springMVC-servlet.xml
+ 
+<!-- 配置SpringMVC的前端控制器，对浏览器发送的请求统一进行处理 -->
+<servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <!--
+        设置springMVC的核心控制器所能处理的请求的请求路径
+        /所匹配的请求可以是/login或.html或.js或.css方式的请求路径
+        但是/不能匹配.jsp请求路径的请求
+    -->
+    <url-pattern>/</url-pattern>
+</servlet-mapping>
+ 
+b>扩展配置方式
+
+可通过init-param标签设置SpringMVC配置文件的位置和名称，通过load-on-startup标签设置SpringMVC前端控制器DispatcherServlet的初始化时间
+<!-- 配置SpringMVC的前端控制器，对浏览器发送的请求统一进行处理 -->
+<servlet>
+    <servlet-name>springMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!-- 通过初始化参数指定SpringMVC配置文件的位置和名称 -->
+    <init-param>
+        <!-- contextConfigLocation为固定值 -->
+        <param-name>contextConfigLocation</param-name>
+        <!-- 使用classpath:表示从类路径查找配置文件，例如maven工程中的src/main/resources -->
+        <param-value>classpath:springMVC.xml</param-value>
+    </init-param>
+    <!-- 
+ 		作为框架的核心组件，在启动过程中有大量的初始化操作要做
+		而这些操作放在第一次请求时才执行会严重影响访问速度
+		因此需要通过此标签将启动控制DispatcherServlet的初始化时间提前到服务器启动时
+	-->
+    <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+    <servlet-name>springMVC</servlet-name>
+    <!--
+        设置springMVC的核心控制器所能处理的请求的请求路径
+        /所匹配的请求可以是/login或.html或.js或.css方式的请求路径
+        但是/不能匹配.jsp请求路径的请求
+    -->
+    <url-pattern>/</url-pattern>
+</servlet-mapping>
+```
+
+#### RequestMapping注解了解吗
+
+```java
+### 1、@RequestMapping注解的功能
+
+从注解名称上我们可以看到，@RequestMapping注解的作用就是将请求和处理请求的控制器方法关联起来，建立映射关系。
+
+SpringMVC 接收到指定的请求，就会来找到在映射关系中对应的控制器方法来处理这个请求。
+    
+
+### 2、@RequestMapping注解的位置
+
+@RequestMapping标识一个类：设置映射请求的请求路径的初始信息
+
+@RequestMapping标识一个方法：设置映射请求请求路径的具体信息
+    
+### 3、@RequestMapping注解的value属性
+
+@RequestMapping注解的value属性通过请求的请求地址匹配请求映射
+
+@RequestMapping注解的value属性是一个字符串类型的数组，表示该请求映射能够匹配多个请求地址所对应的请求
+
+@RequestMapping注解的value属性必须设置，至少通过请求地址匹配请求映射
+### 4、@RequestMapping注解的method属性
+
+@RequestMapping注解的method属性通过请求的请求方式（get或post）匹配请求映射
+
+@RequestMapping注解的method属性是一个RequestMethod类型的数组，表示该请求映射能够匹配多种请求方式的请求
+
+若当前请求的请求地址满足请求映射的value属性，但是请求方式不满足method属性，则浏览器报错405：Request method 'POST' not supported
+    
+注：
+
+1、对于处理指定请求方式的控制器方法，SpringMVC中提供了@RequestMapping的派生注解
+
+处理get请求的映射-->@GetMapping
+
+处理post请求的映射-->@PostMapping
+
+处理put请求的映射-->@PutMapping
+
+处理delete请求的映射-->@DeleteMapping
+
+2、常用的请求方式有get，post，put，delete
+
+但是目前浏览器只支持get和post，若在form表单提交时，为method设置了其他请求方式的字符串（put或delete），则按照默认的请求方式get处理
+
+若要发送put和delete请求，则需要通过spring提供的过滤器HiddenHttpMethodFilter，在RESTful部分会讲到
+
+### 5、@RequestMapping注解的params属性（了解）
+
+@RequestMapping注解的params属性通过请求的请求参数匹配请求映射
+
+@RequestMapping注解的params属性是一个字符串类型的数组，可以通过四种表达式设置请求参数和请求映射的匹配关系
+
+"param"：要求请求映射所匹配的请求必须携带param请求参数
+
+"!param"：要求请求映射所匹配的请求必须不能携带param请求参数
+
+"param=value"：要求请求映射所匹配的请求必须携带param请求参数且param=value
+
+"param!=value"：要求请求映射所匹配的请求必须携带param请求参数但是param!=value
+
+ ### 6、SpringMVC支持路径中的占位符（重点）
+
+原始方式：/deleteUser?id=1
+
+rest方式：/deleteUser/1
+
+SpringMVC路径中的占位符常用于RESTful风格中，当请求路径中将某些数据通过路径的方式传输到服务器中，就可以在相应的@RequestMapping注解的value属性中通过占位符{xxx}表示传输的数据，在通过@PathVariable注解，将占位符所表示的数据赋值给控制器方法的形参
+案例
+@RequestMapping("/testRest/{id}/{username}")
+public String testRest(@PathVariable("id") String id, @PathVariable("username") String username){
+    System.out.println("id:"+id+",username:"+username);
+    return "success";
+}
+//最终输出的内容为-->id:1,username:admin
+```
 
 
 
 
-spring 事务了解吗
-
-聊一下事务，什么是事务
 
 mysql事务隔离级别了解吗
 
@@ -341,7 +520,7 @@ linux下查询日志的命令呢
 
 集合用的多吗，项目中集合用来做什么
 
-spring的@Autowired和@Resource有什么区别
+
 
 
 
