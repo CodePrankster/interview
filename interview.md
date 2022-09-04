@@ -654,6 +654,62 @@ java有内存泄漏吗
 
 
 
+### 搜狐
+
+中断
+
+sleep和yield
+
+指令周期
+
+排序算法
+
+二叉树遍历问题
+
+int num= 999 int num =9_9_9 int num = _999
+
+finalize()用法
+
+new String（） 和 直接赋值的String比较
+
+数组初始化
+
+sleep和wait
+
+instanc of
+
+Threadlocal
+
+类加载器
+
+ArrayList扩容
+
+函数式接口
+
+jvm参数
+
+G1和cms
+
+jvm内存屏障
+
+异或左移运算符
+
+跨域
+
+ipc类地址
+
+类型占字节数
+
+DNS
+
+死锁
+
+linux负载怎么查看
+
+斐波那契数列
+
+
+
 
 
 
